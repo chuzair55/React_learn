@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import './App.css';
 import { Planets} from './Planets';
 
 function App() {
   const age=150;
   const isGreen=true;
+  
+  const [count, setCount]= useState(0);
+
 
   const planets =[
     {name: "Mars" , isGasPlanet:false},
@@ -14,8 +18,26 @@ function App() {
     {name: "Uranus" , isGasPlanet:true},
   ];
   age>=18 ? console.log("Over age") : console.log("Under Age");
+
+  
+  const Increase=()=>{
+    setCount(count+1);
+  }
+  const Decrease=()=>{
+    setCount(count-1);
+  }
+  const setZero=()=>{
+    setCount(0);
+  }
   return (
+    
     <div className="App">
+      
+      
+      <h1>{count}</h1>
+      <button onClick={Increase}>Increase</button>
+      <button onClick={Decrease}>Decrease</button>
+      <button onClick={setZero}>Set Zero</button>
       {planets.map((planet, key)=>{
         if(planet.isGasPlanet){
         return  <Planets  name={planet.name} />}
